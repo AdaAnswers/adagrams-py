@@ -61,16 +61,18 @@ def score_word(word):
     return score
 
 def get_highest_word_score(word_list):
+    if not word_list:
+        return None
+    
     highest = (word_list[0],0)
     for word in word_list:
-
         score = score_word(word)
         if score > highest[1]:
             highest = (word, score)
             
         elif score == highest[1]:
             if len(highest[0]) == 10:
-                pass
+                continue
             elif len(word) == 10 and len(highest[0]) != 10:
                 highest = (word, score)
             elif len(word) < len(highest[0]):
